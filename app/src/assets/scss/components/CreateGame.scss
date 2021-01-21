@@ -1,0 +1,15 @@
+@import "../variables";
+
+.create-game {
+  img {
+    display: block;
+    width: 90%;
+    margin: 50px auto;
+  }
+  .players {
+    p {
+      text-align: center;
+      color: #FFF;
+    }
+  }
+}
