@@ -1,0 +1,26 @@
+.points-arr {
+  .players {
+    display: flex;
+    flex-direction: column;
+    .player {
+      margin: 10px 0;
+      display: flex;
+      justify-content: space-evenly;
+      .name {
+        font-weight: 600;
+        font-size: 1.2rem;
+        color: #fff;
+      }
+      .point {        
+        font-size: 1.2rem;
+        color: #fff;
+      }
+      .buttons {
+        button {
+          margin: 0 5px;
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+}

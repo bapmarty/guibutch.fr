@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChessRook, faGlassCheers } from '@fortawesome/free-solid-svg-icons'
 import { faTimesCircle } from '@fortawesome/free-regular-svg-icons'
-import Cookies from 'js-cookie'
+import Cookies from 'js-cookie';
+
+import "../assets/scss/components/Game.scss";
 
 const Game = () => {
 
@@ -45,7 +47,7 @@ const Game = () => {
   return (
     <>
       <section className="points-arr">
-        <div className="players-name">
+        <div className="players">
           {players.map((player, i) => {
             return (
               <div className="player">
