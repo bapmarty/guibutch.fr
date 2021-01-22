@@ -1,18 +1,38 @@
 version: '3.5'
 
 services:
-  front:
+  app:
     build: ./app
     restart: always
-    ports:
-      - 80:3000
     volumes:
       - ./app/:/usr/src/
       - ./app/package.json:/usr/src/package.json
       - /usr/src/node_modules
+    labels:
+      traefik.enable: "true"
+      traefik.docker.network: "traefik_network"
+      traefik.http.services.guibutchfr.loadbalancer.server.port: "3000"
+      #HTTP
+      traefik.http.routers.app-guibutchfr.entrypoints: "http"
+      traefik.http.routers.app-guibutchfr.rule: "Host(`guibutch.baptistemrt.fr`)"
+      traefik.http.routers.app-guibutchfr.middlewares: redirect-https
+      #HTTPS
+      traefik.http.routers.app-guibutchfr-secure.entrypoints: "https"
+      traefik.http.routers.app-guibutchfr-secure.rule: "Host(`guibutch.baptistemrt.fr`)"
+      #TLS
+      traefik.http.routers.app-guibutchfr-secure.tls: "true"
+      traefik.http.routers.app-guibutchfr-secure.tls.certresolver: "le-baptistemrt"
+      traefik.http.routers.app-guibutchfr-secure.tls.domains[0].main: "baptistemrt.fr"
+      traefik.http.routers.app-guibutchfr-secure.tls.domains[0].sans: "guibutch.baptistemrt.fr"
+      #Redirect https
+      traefik.http.middlewares.redirect-https.redirectscheme.scheme: "https"
+      traefik.http.middlewares.redirect-https.redirectscheme.permanent: "true"
     networks:
+      - traefik_network
       - guibutch
 
 networks:
+  traefik_network:
+    external: true
   guibutch:
     name: guibutch
