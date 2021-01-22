@@ -6,6 +6,7 @@
       margin: 10px 0;
       display: flex;
       justify-content: space-evenly;
+      align-items: center;
       .name {
         font-weight: 600;
         font-size: 1.2rem;
@@ -19,6 +20,21 @@
         button {
           margin: 0 5px;
           font-size: 1.2rem;
+          border: 0;
+          color: #EEE;
+          width: 40px;
+          height: 40px;
+          padding: 5px;
+          border-radius: 5px;
+          &.win-round {
+            background-color: green;
+          }
+          &.lose-round {
+            background-color: darkred;
+          }
+          &.defend-round {
+            background-color: orange;
+          }
         }
       }
     }

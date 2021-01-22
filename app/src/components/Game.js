@@ -52,15 +52,15 @@ const Game = () => {
             return (
               <div className="player">
                 <div className="name">
-                  {player.name}
+                  {player.name[0].toUpperCase()}
                 </div>
                 <div className="point">
                   {player.point}
                 </div>
                 <div className="buttons">
-                  <button onClick={e => roundWin(i, e)}><FontAwesomeIcon icon={faGlassCheers}/></button>
-                  <button onClick={e => roundLose(i, e)}><FontAwesomeIcon icon={faTimesCircle}/></button>
-                  <button onClick={e => roundDefend(i, e)}><FontAwesomeIcon icon={faChessRook}/></button>
+                  <button className="win-round" onClick={e => roundWin(i, e)}><FontAwesomeIcon icon={faGlassCheers}/></button>
+                  <button className="lose-round" onClick={e => roundLose(i, e)}><FontAwesomeIcon icon={faTimesCircle}/></button>
+                  <button className="defend-round" onClick={e => roundDefend(i, e)}><FontAwesomeIcon icon={faChessRook}/></button>
                 </div>
               </div>
             )
