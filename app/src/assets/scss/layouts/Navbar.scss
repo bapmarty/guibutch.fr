@@ -7,7 +7,7 @@ nav {
   justify-content: space-between;
   .logo {
     width: 128px;
-    margin: 0 20px;
+    margin: 15px 20px;
   }
   .nav-list {
     padding: 0;
@@ -27,7 +27,7 @@ nav {
           color: $color;
           transition: all .2s ease-in-out;
         }
-        &#outlined-button {
+        &.outlined-button {
           padding: 5px;
           border: 2px solid $color;
           color: $color;
