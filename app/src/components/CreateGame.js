@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import Cookies from 'js-cookie';
-import WhiteLogo from "../assets/images/white-guibutch.png";
 
 import "../assets/scss/components/CreateGame.scss";
 
@@ -34,11 +33,14 @@ const CreateGame = () => {
     history.push('/game');
   }
 
+  useEffect(() => {
+    Cookies.remove("game");
+  })
+
   return (
     <>
       <section className="create-game">
-        <img src={WhiteLogo} />
-        <section className="players">
+        <form className="players" autoComplete="false">
           <p>
             Nombre de joueurs:
             <select
@@ -74,7 +76,7 @@ const CreateGame = () => {
               })
             }
           </ul>
-        </section>
+        </form>
         <section className="submit-btn">
           <button onClick={handleSubmit} >Commencer une partie</button>
         </section>
