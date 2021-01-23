@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChessRook, faGlassCheers } from '@fortawesome/free-solid-svg-icons'
 import { faTimesCircle } from '@fortawesome/free-regular-svg-icons'
@@ -7,6 +8,8 @@ import Cookies from 'js-cookie';
 import "../assets/scss/components/Game.scss";
 
 const Game = () => {
+
+  const history = useHistory();
 
   const [players, setPlayers] = useState([]);
   const [rounds, setRounds] = useState([]);
@@ -34,7 +37,11 @@ const Game = () => {
     setPlayers(playerList);
     Cookies.set('game', players);
   }
-  
+
+  const endOfGame = () => {
+    Cookies.remove('game');
+    history.push('/');
+  }
   
   useEffect(() => {
     const cookiePlayers = JSON.parse(Cookies.get('game'));
@@ -52,7 +59,7 @@ const Game = () => {
             return (
               <div className="player">
                 <div className="name">
-                  {player.name[0].toUpperCase()}
+                  {player.name.charAt(0).toUpperCase() + player.name.slice(1)}
                 </div>
                 <div className="point">
                   {player.point}
@@ -66,6 +73,11 @@ const Game = () => {
             )
           })}
         </div>
+      </section>
+      <section className="end-of-game">
+          <button onClick={endOfGame}>
+            Fin de partie
+          </button>
       </section>
     </>
   )

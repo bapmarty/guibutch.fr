@@ -27,7 +27,7 @@ const CreateGame = () => {
   const handleSubmit = e => {
     for (var i = 0; i < playersName.length; i++) {
       if (playersName[i].name === "")
-        playersName[i].name = `player${i+1}`;
+        playersName[i].name = `joueur${i+1}`;
     }
     Cookies.set('game', playersName);
     history.push('/game');
