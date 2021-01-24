@@ -12,10 +12,9 @@ const Game = () => {
   const history = useHistory();
 
   const [players, setPlayers] = useState(JSON.parse(Cookies.get('game')));
-  const [rounds, setRounds] = useState([]);
-  const [winPoint, setWinPoint] = useState(players.length >= 5 ? 3 : 2);
-  const [losePoint, setLosePoint] = useState(-1);
-  const [defendPoint, setDefendPoint] = useState(1);
+  const [winPoint] = useState(players.length >= 5 ? 3 : 2);
+  const [losePoint] = useState(-1);
+  const [defendPoint] = useState(1);
 
   const roundWin = (i, e) => {
     const playerList = [...players]; 
