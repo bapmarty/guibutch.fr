@@ -49,7 +49,7 @@ const Game = () => {
         <div className="players">
           {players.map((player, i) => {
             return (
-              <div className="player">
+              <div className="player" key={i}>
                 <div className="name">
                   {player.name.charAt(0).toUpperCase() + player.name.slice(1)}
                 </div>
