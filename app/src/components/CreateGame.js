@@ -35,7 +35,7 @@ const CreateGame = () => {
 
   useEffect(() => {
     Cookies.remove("game");
-  })
+  }, []);
 
   return (
     <>

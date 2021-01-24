@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChessRook, faGlassCheers } from '@fortawesome/free-solid-svg-icons'
@@ -11,9 +11,9 @@ const Game = () => {
 
   const history = useHistory();
 
-  const [players, setPlayers] = useState([]);
+  const [players, setPlayers] = useState(JSON.parse(Cookies.get('game')));
   const [rounds, setRounds] = useState([]);
-  const [winPoint, setWinPoint] = useState(2);
+  const [winPoint, setWinPoint] = useState(players.length >= 5 ? 3 : 2);
   const [losePoint, setLosePoint] = useState(-1);
   const [defendPoint, setDefendPoint] = useState(1);
 
@@ -42,14 +42,6 @@ const Game = () => {
     Cookies.remove('game');
     history.push('/');
   }
-  
-  useEffect(() => {
-    const cookiePlayers = JSON.parse(Cookies.get('game'));
-    setPlayers(cookiePlayers);
-    if (cookiePlayers.length >= 5) {
-      setWinPoint(3);
-    }
-  }, []);
 
   return (
     <>

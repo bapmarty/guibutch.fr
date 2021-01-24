@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState} from "react";
 import { NavLink } from "react-router-dom";
 import Cookies from 'js-cookie';
 
@@ -11,7 +11,7 @@ const Navbar = () => {
 
   useEffect(() => {
     Cookies.get('game') ? setGame({route: "/game", name: "Partie en cours"}) : setGame({route: "/create-game", name: "Créer une partie"});
-  })
+  }, [])
   return (
     <>
       <nav>
