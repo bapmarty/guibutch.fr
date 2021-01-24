@@ -16,7 +16,7 @@ const Navbar = () => {
     <>
       <nav>
         <div>
-          <NavLink to="/"><img className="logo" src={Logo} /></NavLink>
+          <NavLink to="/"><img className="logo" src={Logo} alt={"logo"}/></NavLink>
         </div>
         <div>
           <ul className="nav-list">
